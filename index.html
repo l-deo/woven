@@ -6,13 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="title">HOME</title>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/searcher.css">
+  <link rel="stylesheet" type="text/css" href="./css/translate.css">
+  <link rel="stylesheet" type="text/css" href="./css/weather.css">
   <script src="./js/title.js"></script>
 </head>
 
 <body>
   <div id="framework">
+    <form id="weather_bar" class="topside">
+      <select aria-label="unit" id="unit">
+        <option value="metric">°C</option>
+        <option value="imperial">°F</option>
+      </select>
+      <input aria-label="city" id="city" class="city" type="text" id="city" value="">
+      <input aria-label="weather_submit" id="weather_submit" class="submit" type="submit" name="weather_submit"
+        value="✢">
+    </form>
 
-    <form id="translate_bar">
+    <form id="translate_bar" class="topside">
       <select aria-label="translate_language" id="translate_select" class="translate_select" name="targetLang">
         <option aria-label="English" value="en">English</option>
         <option aria-label="Chinese" value="zh">中文</option>
@@ -21,13 +33,14 @@
         <option aria-label="French" value="fr">Français</option>
         <option aria-label="German" value="de">Deutsch</option>
         <option aria-label="Spanish" value="es">español</option>
-        <input aria-label="translate_input" id="translate_input" class="translate_input" type="text" name="text"
-          value="" autocomplete="off">
-        <input aria-label="translate_submit" id="translate_submit" class="submit" type="submit" name="translate_submit"
-          value="✢">
+      </select>
+      <input aria-label="translate_input" id="translate_input" class="translate_input" type="text" name="text" value=""
+        autocomplete="off">
+      <input aria-label="translate_submit" id="translate_submit" class="submit" type="submit" name="translate_submit"
+        value="✢">
     </form>
 
-    <form id="search" class="search">
+    <form id="search" class="topside">
       <div id="search_bar" class="search_bar">
         <select aria-label="search_web" id="search_web" class="search_web">
           <option aria-label="Bing" value="https://www.bing.com/search?q=">Bing</option>
@@ -36,45 +49,53 @@
           <option aria-label="Google" value="https://www.google.com/search?q=">Google</option>
         </select>
         <input aria-label="search_input" id="search_input" class="search_input" type="text" value="" autocomplete="off">
-        <input aria-label="search_submit" id="search_submit" class="search_submit" type="submit" value="✢">
+        <input aria-label="search_submit" id="search_submit" class="search_submit" type="submit" name="search_submit" value="✢">
       </div>
-        <div id="suggest" class="suggest">
+      <div id="suggest" class="suggest">
         <ul id="search_result">
         </ul>
-      </div>  
+      </div>
     </form>
-    <script src="./js/sc.js"></script>
+    <script src="./js/search.js"></script>
 
     <div class="case">
 
-      <div class="menu">
+      <div id="menu" class="menu">
         <div class="one">
-          <h1><a id="bookmark" class="titles" onclick="back()" href="./bookmark.html" target="box">BOOKMARKS</a></h1>
+          <h1><a id="title_bookmark" class="titles" onclick="backContent(); m_Content(); bookmarkContent()" href="./bookmark.html" target="bookmark_body">BOOKMARKS</a></h1>
         </div>
         <div class="one">
-          <h1><a id="translate" class="titles" onclick="translateContent(); m_translateContent()">TRANSLATE</a></h1>
+          <h1><a id="title_translate" class="titles" onclick="backContent(); m_Content(); translateContent()" href="#">TRANSLATE</a></h1>
         </div>
-        <!-- <div class="one">
-          <h1><a id="weather" class="titles" onclick="back()" href="./tool.html" target="box">TOOL</a></h1>
-        </div> -->
         <div class="one">
-          <h1><a id="time" class="titles" onclick="back()" href="./time.html" target="box">TIME</a></h1>
+          <h1><a id="title_weather" class="titles" onclick="backContent(); m_Content(); weatherContent()" href="#">WEATHER</a></h1>
+        </div>
+        <div class="one">
+          <h1><a id="title_time" class="titles" onclick="backContent(); m_Content(); timeContent()" href="./time.html" target="time_body">TIME</a></h1>
         </div>
       </div>
 
       <div class="content" id="content">
-        <iframe aria-label="framebox" class="box" name="box" frameborder="0" src="./bookmark.html"></iframe>
-        <table id="translate_box">
-        <button aria-label="back-btn" class="back-btn" onclick="m_back()" type="button">︿</button>
-          <tbody id="tbody">
+        <button aria-label="back-btn" id="back-btn" class="back-btn" onclick="m_backContent()" type="button">︿</button>
+
+        <div id="time_box" class="box otherall_box">
+          <iframe id="time_body" class="_body" name="time_body" title="time_body" frameborder="0" src="./time.html"></iframe>
+        </div>
+
+        <table id="translate_box" class="box otherall_box">
+          <tbody id="translate_body" class="_body">
           </tbody>
         </table>
+
+        <div id="bookmark_box" class="box">
+          <iframe id="bookmark_body" class="_body" name="bookmark_body" title="bookmark_body" frameborder="0" src="./bookmark.html"></iframe>
+        </div>
+
       </div>
 
-    </div>
-    <script src="./js/m-content.js"></script>
+    </div>   
     <script src="./js/translate.js"></script>
-    <!-- <script src="./js/backgroud.js"></script> -->
+    <script src="./js/content.js"></script> 
   </div>
 
 </body>
