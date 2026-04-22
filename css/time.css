@@ -1,67 +1,345 @@
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
     }
-    .Time {
-    animation: fadeIn 2s;
-}
-  
-body {
-    background-color: rgb(202, 202, 202);
+
+    to {
+        opacity: 1;
+    }
 }
 
 .Time {
-    display: flex;
-    /* flex-direction: column; */
-    /* flex-direction: column-reverse; */
-    justify-content: flex-end;
+    animation: fadeIn 2s;
 }
 
 .Time>time {
-    font-size: 400%;
-    line-height: 15vh;
-    padding-right: 5%;
+    font-size: 520%;
+    margin: 1vh;
     text-align: right;
 }
 
-#y {
-    font-family: Impact, Charcoal, sans-serif;
-    /* font-style: italic; */
-    font-weight: bold;
-    color: rgba(50, 50, 50, 0.99);
+body {
+    background-color: rgb(202, 202, 202);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-#w {
-    font-family: "Times New Roman", Times, serif;
-    /* font-style: italic; */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    display: none;
+}
+
+#time_boxframe {
+    display: flex;
+    min-height: 70vh;
+    width: 100vw;
+    gap: 3vw;
+}
+
+#timeshelf {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 5% 0 5%;
+    width: 50vw;
+    min-height: 70vh;
+}
+
+#clock_time {
+    font-family: Impact, Charcoal, sans-serif;
     font-weight: bold;
+    color: rgba(50, 50, 50, 0.75);
+    font-size: 5.5em;
+    letter-spacing: 0.08em;
+    margin-top: 2vh;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+#clock_header {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: rgba(50, 50, 50, 0.6);
+    font-size: 1em;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2vh;
+}
+
+#clock_hours {
+    font-size: 1.2em;
+}
+
+#clock_seconds {
+    font-size: 0.7em;
+    margin-top: 0.2em;
+}
+
+#calendar_weekday {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: rgba(50, 50, 50, 0.6);
+    font-size: 3.5em;
+    /* letter-spacing: 0.08em; */
+    margin-top: 0.6vh;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+#year_progress {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: rgba(50, 50, 50, 0.6);
+    font-size: 2em;
+    letter-spacing: 0.08em;
+    margin-top: 1vh;
+    text-align: left;
+}
+
+#calendar_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50vw;
+    padding-right: 5vw;
+    animation: fadeIn 2s;
+    min-height: 70vh;
+}
+
+#calendar_header {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: rgba(50, 50, 50, 0.99);
+    font-size: 270%;
+    letter-spacing: 0.15em;
+    margin-bottom: 2vh;
+    cursor: pointer;
+    user-select: none;
+}
+
+#calendar_header span {
+    margin-right: 1vw;
+}
+
+#calendar_weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: rgba(50, 50, 50, 0.6);
+    font-size: 170%;
+    letter-spacing: 0.08em;
+    margin-bottom: 1vh;
+}
+
+#calendar_weekdays span {
+    text-align: center;
+}
+
+#calendar_days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 0.7vh 0.7vw;
+    width: 100%;
+    font-family: Impact, Charcoal, sans-serif;
+    font-weight: bold;
+    color: rgba(50, 50, 50, 0.99);
+    font-size: 230%;
+    letter-spacing: 0.08em;
+    min-height: 0;
+}
+
+.calendar_day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4vh 0;
+}
+
+.calendar_day.outside {
+    color: rgba(50, 50, 50, 0.3);
+}
+
+.calendar_day.weekend {
     color: rgba(50, 50, 50, 0.6);
 }
 
-#d {
-    font-family: Impact, Charcoal, sans-serif;
-    /* font-style: italic; */
+.calendar_day.today {
+    color: rgba(202, 202, 202, 1);
+    background: rgba(50, 50, 50, 0.95);
+}
+
+#calendar_today {
+    font-family: "Times New Roman", Times, serif;
     font-weight: bold;
     color: rgba(50, 50, 50, 0.6);
+    font-size: 2.5em;
+    letter-spacing: 0.1em;
+    margin-top: 0;
+    text-align: left;
 }
 
-#m {
-    font-family: "Times New Roman", Times, serif;
-    /* font-style: italic; */
-    font-weight: bold;
-    color: rgba(50, 50, 50, 0.99);
+#calendar_today span {
+    display: block;
+    line-height: 1.1;
 }
 
-#t {
-    font-family: Impact, Charcoal, sans-serif;
-    /* font-style: italic; */
-    font-weight: bold;
-    color: rgba(50, 50, 50, 0.99);
+@media screen and (max-width: 900px) {
+
+    html,
+    body {
+        height: auto;
+        min-height: 100svh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+    #time_boxframe {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding-bottom: 0;
+        width: 100%;
+        gap: 0;
+    }
+
+    #timeshelf {
+        height: auto;
+        min-height: 150px;
+        padding: 0 5%;
+        width: 100%;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        align-items: flex-start;
+    }
+
+    #calendar_box {
+        height: auto;
+        min-height: 0;
+        padding: 5% 5% calc(12% + env(safe-area-inset-bottom)) 5%;
+        width: 100%;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    #calendar_header {
+        letter-spacing: 0;
+        width: 100%;
+    }
+
+    #calendar_header span {
+        display: inline-block;
+        width: 50%;
+        text-align: left;
+    }
+
+    #calendar_weekdays {
+        display: none;
+    }
+
+    #calendar_today {
+        text-align: left;
+    }
+
+    #calendar_days {
+        font-size: 180%;
+        gap: 0.5vh 0.5vw;
+    }
+
+    #calendar_weekdays {
+        font-size: 150%;
+    }
 }
 
-#s {
-    font-family: Impact, Charcoal, sans-serif;
-    /* font-style: italic; */
-    font-weight: bold;
-    color: rgba(50, 50, 50, .6);
+@media screen and (max-width: 500px) and (min-width: 400px) {
+    .Time>time {
+        font-size: 300%;
+    }
+
+    #clock_time {
+        font-size: 350%;
+    }
+
+    #calendar_weekday,
+    #calendar_header {
+        font-size: 170%;
+    }
+
+    #calendar_days {
+        font-size: 130%;
+    }
+
+    #year_progress,
+    #calendar_weekdays,
+    #calendar_today {
+        font-size: 150%;
+    }
+}
+
+@media screen and (max-width: 399px) and (min-width: 251px) {
+    .Time>time {
+        font-size: 250%;
+    }
+
+    #clock_time {
+        font-size: 300%;
+    }
+
+    #calendar_weekday,
+    #calendar_header {
+        font-size: 150%;
+    }
+
+    #calendar_days {
+        font-size: 115%;
+    }
+
+    #year_progress,
+    #calendar_weekdays,
+    #calendar_today {
+        font-size: 150%;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    .Time>time {
+        font-size: 200%;
+    }
+
+    #clock_time {
+        font-size: 250%;
+    }
+
+    #calendar_weekday,
+    #calendar_header {
+        font-size: 130%;
+    }
+
+    #calendar_days {
+        font-size: 100%;
+    }
+
+    #year_progress,
+    #calendar_weekdays,
+    #calendar_today {
+        font-size: 100%;
+    }
 }
