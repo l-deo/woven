@@ -1,3 +1,14 @@
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+  }
+  h1 {
+  animation: fadeIn 2s;
+  }
+  p, td {
+  animation: fadeIn 2s;
+  }
+
 body {
   background-color: rgb(202, 202, 202);
   /* background: url(./img/background.jpg); */
@@ -6,7 +17,7 @@ body {
 }
 
 .case::-webkit-scrollbar {
-  width: 0 !important;
+  display: none !important;
 }
 
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
@@ -18,188 +29,6 @@ body {
   justify-content: space-between;
   margin: 0;
   width: 100vw;
-}
-
-#search {
-  -webkit-animation: fadeIn 2.5s;
-  animation: fadeIn 2.5s;
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  display: flex;
-  flex-direction: column;
-  height: 60px;
-  margin: 0 2vw;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 15px;
-}
-
-#search_bar {
-  display: flex;
-  flex-direction: row;
-}
-
-#search_web {
-  background-color: transparent;
-  border: none;
-  color: rgb(74, 66, 102);
-  float: left;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 2.5em;
-  font-weight: 500;
-  height: 60px;
-  max-width: 200px;
-  min-width: 90px;
-  outline: 0;
-  text-align: center;
-  width: 20%;
-}
-
-#search_input {
-  background-color: transparent;
-  border: none;
-  color: rgb(74, 66, 102);
-  font-size: 2em;
-  height: 60px;
-  min-height: 35px;
-  outline: 0;
-  overflow: hidden;
-  padding: 0 10px;
-  width: 100%;
-}
-
-#search_submit {
-  background-color: transparent;
-  border: none;
-  color: rgb(74, 66, 102);
-  float: right;
-  font-size: 2.5em;
-  font-weight: 500;
-  height: 60px;
-  outline: 0;
-  padding: 0 13px;
-}
-
-/* Search suggestion styles */
-.suggest {
-  display: none;
-  width: 100%;
-}
-
-.suggest ul {
-  background-color: rgba(220, 220, 220, 0.55);
-  list-style: none;
-  margin-top: 5px;
-  padding: 0;
-}
-
-.suggest ul li {
-  background-color: transparent;
-  color: rgb(74, 66, 102);
-  cursor: pointer;
-  font-size: 20px;
-  padding: 10px;
-  text-align: center;
-}
-
-.suggest ul li:hover {
-  background-color: rgba(220, 220, 220, 0.7);
-}
-
-/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
-
-#translate_bar {
-  -webkit-animation: fadeIn 2.5s;
-  animation: fadeIn 2.5s;
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  display: none;
-  height: 60px;
-  margin: 0 2vw;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 15px;
-}
-
-#translate_select {
-  background-color: transparent;
-  border: none;
-  color: rgb(74, 66, 102);
-  float: left;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 2.5em;
-  font-weight: 600;
-  height: 60px;
-  letter-spacing: 1.5px;
-  max-width: 200px;
-  min-width: 50px;
-  outline: 0;
-  text-align: center;
-  width: 20%;
-}
-
-#translate_input {
-  background-color: transparent;
-  border: none;
-  color: rgb(74, 66, 102);
-  font-size: 30px;
-  height: 60px;
-  min-height: 35px;
-  outline: 0;
-  padding: 0 10px;
-  width: 100%;
-}
-
-#translate_submit {
-  background-color: transparent;
-  border: none;
-  color: rgb(74, 66, 102);
-  float: right;
-  font-size: 2em;
-  font-weight: 500;
-  height: 60px;
-  outline: 0;
-  padding: 0 13px;
-}
-
-#translate_box {
-  display: none;
-  height: 100%;
-  /* overflow: hidden; */
-  width: 100%;
-}
-
-tbody {
-  display: flex;  
-  flex-direction: row-reverse;
-  height: 95%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  width: 100%;
-}
-
-tbody::-webkit-scrollbar {
-  width: 0 !important;
-}
-
-tr {
-  display: flex;
-  flex-direction: column-reverse;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-tr::-webkit-scrollbar {
-  width: 0 !important;
-}
-
-td {
-  color: rgb(74, 66, 102);
-  /* font-family: "Times New Roman", Times, serif; */
-  font-size: 8vw;
-  font-weight: 900;
-  text-align: right;
-  word-break: break-all;
 }
 
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
@@ -223,36 +52,40 @@ td {
 
 a.titles {
   color: rgb(70, 70, 70);
-  font-family: Georgia, serif;
-  font-size: 4.5vw;
+  /* font-family: "Times New Roman", Times, serif; */
+  font-size: 5vw;
   font-weight: 100;
   letter-spacing: -3px;
   text-decoration: none;
 }
 
 .content {
-  /* display: flex;*/
   margin-left: 10%;
-  margin-right: 2.5vw;
+  /* margin-right: 2.5vw; */
   overflow: hidden;
   width: 85vw;
 }
 
-.box {
-  height: 103%;
+._body {
+  height: 103vh;
   overflow: hidden;
   width: 103%;
 }
 
 .back-btn {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgb(202, 202, 202);
   border-color: rgba(255, 255, 255, 0);
   color: rgb(70, 70, 70);
   display: none;
   font-size: xx-large;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
 }
-
+/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
+.otherall_box {
+  display: none;
+}
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
 
 @media screen and (max-width: 650px) {
@@ -280,5 +113,35 @@ a.titles {
 
   #translate_submit {
     display: none;
+  }
+}
+
+/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
+
+@media screen and (max-width: 500px) and (min-width: 400px) {
+  .bookmark a {
+    font-size: 400%;
+  }
+  .Time>time {
+    font-size: 300%;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .bookmark a {
+    font-size: 300%;
+  }
+  .Time>time {
+    font-size: 200%;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .bookmark a {
+    font-size: 120%;
+  }
+
+  .Time>time {
+    font-size: 100%;
   }
 }
