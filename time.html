@@ -9,24 +9,31 @@
 </head>
 
 <body>
-    <div class="Timebox">
-        <div class="Time">
-            <time id="y">Year</time>
+    <div id="time_boxframe" class="boxframe">
+        <div id="timeshelf">
+            <div id="clock_time">
+                <div id="clock_header">It's</div>
+                <div id="clock_hours">00:00</div>
+                <div id="clock_seconds">00</div>
+            </div>
+            <div id="calendar_weekday">Weekday</div>
+            <div id="year_progress">day 0 of the year</div>
         </div>
-        <div class="Time">
-            <time id="w">Week</time>
-        </div>
-        <div class="Time">
-            <time id="d">Days</time>
-        </div>
-        <div class="Time">
-            <time id="m">Mouth</time>
-        </div>
-        <div class="Time">
-            <time id="t">time</time>
-        </div>
-        <div class="Time">
-            <time id="s">Second</time>
+        <div id="calendar_box">
+            <div id="calendar_header">
+                <span id="calendar_month">MONTH</span>
+                <span id="calendar_year">YEAR</span>
+            </div>
+            <div id="calendar_weekdays">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+            </div>
+            <div id="calendar_days"></div>
         </div>
     </div>
     <script src="./js/time.js"></script>
