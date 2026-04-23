@@ -86,6 +86,19 @@ a.titles {
 .otherall_box {
   display: none;
 }
+
+/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
+
+@media screen and (max-width: 720px) {
+  #search_submit {
+    display: none;
+  }
+
+  #translate_submit {
+    display: none;
+  }
+}
+
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
 
 @media screen and (max-width: 650px) {
@@ -103,16 +116,6 @@ a.titles {
 
   td {
     margin-bottom: 7.5vh;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  #search_submit {
-    display: none;
-  }
-
-  #translate_submit {
-    display: none;
   }
 }
 

@@ -12,7 +12,7 @@ function applyMobileExpandedLayout() {
       framework.style.justifyContent = "flex-start";
     }
     cases.forEach(function(item) {
-      item.style.height = "auto";
+      item.style.height = "90%";
     });
   }
 }
@@ -86,20 +86,6 @@ function translateContent() {
   translate_box.style.display = "flex";
 }
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
-var bookmark_box = document.getElementById("bookmark_box")
-
-function m_bookmarkContent() {
-  var hupu = document.getElementsByClassName("hupu");
-  var ithome = document.getElementsByClassName("ithome");
-  var zhibo8 = document.getElementsByClassName("zhibo8");
-  if ((screen.width) <= 600) {
-      for (let i = 0; i < hupu.length; i++) {
-          hupu[i].href = "https://m.hupu.com/";
-          ithome[i].href = "https://m.ithome.com/";
-          zhibo8[i].href = "https://m.zhibo8.com/";
-      };
-  };
-}
 
 function bookmarkContent() {
   search.style.display = "flex"

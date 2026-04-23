@@ -3,23 +3,10 @@ var pageCount = 1;
 var page = document.body.cloneNode(true);
 
 // 长按相关配置
-var longPressDuration = 800; // 长按时间阈值（毫秒）
+var longPressDuration = 2000; // 长按时间阈值（毫秒）
 
 // 全局标志：是否有长按操作正在进行（用于禁用滚动事件）
 var isLongPressInProgress = false;
-
-function m_bookmarkContent() {
-    var hupu = document.getElementsByClassName("hupu");
-    var ithome = document.getElementsByClassName("ithome");
-    var zhibo8 = document.getElementsByClassName("zhibo8");
-    if ((screen.width) <= 600) {
-        for (let i = 0; i < hupu.length; i++) {
-            hupu[i].href = "https://m.hupu.com/";
-            ithome[i].href = "https://m.ithome.com/";
-            zhibo8[i].href = "https://m.zhibo8.com/";
-        };
-    };
-}
 
 // 切换书签展开/收起状态
 function toggleBookmarkExpansion(bookmarkElement) {
