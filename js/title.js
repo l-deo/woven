@@ -13,3 +13,4 @@ if (time < 12) {
 if (time < 5) {
   document.getElementById("title").innerHTML = "Go to sleep!";
 };
+

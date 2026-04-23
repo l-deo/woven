@@ -1,27 +1,21 @@
 var translate = document.getElementById("translate");
 var translate_bar = document.getElementById("translate_bar");
 var translate_box = document.getElementById("translate_box");
-const tbody = document.querySelector('#tbody');
-
-function translateContent() {
-  search.style.display = "none";
-  suggestContainer.style.display = "none";
-  box.style.display = "none";
-  translate_bar.style.display = "flex";
-  translate_box.style.display = "flex";
-}
+const translate_body = document.querySelector('#translate_body');
 
 function m_translateContent() {
-  if (window.innerWidth < 650) {
-    box.style.display = "none";
-    search.style.display = "none";
-    suggestContainer.style.display = "none";
-    title.style.display = "none";
-    backBtn.style.display = "inline";
-    content.style.display = "inline";
-    translate_bar.style.display = "flex";
-    translate_box.style.display = "flex";
-  }
+    if (window.innerWidth < 650) {
+        box.style.display = "none";
+        search.style.display = "none";
+        suggestContainer.style.display = "none";
+        weather_bar.style.display = "none";
+        weather_box.style.display = "none";
+        menu.style.display = "none";
+        backBtn.style.display = "inline";
+        content.style.display = "inline";
+        translate_bar.style.display = "flex";
+        translate_box.style.display = "flex";
+    }
 }
 
 function isCJKCharacter(char) {
@@ -58,6 +52,10 @@ function calculateFontSize(textLength, isMobile, isCJK) {
 
 function adjustFontSize() {
   const element = document.getElementById("td");
+  if (!element) {
+    return;
+  }
+
   const text = element.innerText;
   const textLength = text.length;
   const isMobile = window.innerWidth <= 650;
@@ -66,35 +64,68 @@ function adjustFontSize() {
   element.style.fontSize = `${newFontSize}vw`;
 }
 
+function renderTranslationRow(message, isError) {
+  if (!translate_body) {
+    return;
+  }
 
-translate_bar.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(translate_bar);
-  const text = formData.get('text');
-  const targetLang = formData.get('targetLang');
-
-  const response = await fetch('/api/translate', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ text, targetLang }),
-  });
-  const result = await response.json();
-  const translation = result.translation;
-
-  // 在表格中显示翻译结果
-  tbody.innerHTML = '';
+  translate_body.innerHTML = '';
   const newRow = document.createElement('tr');
+  const cell = document.createElement('td');
 
-  const translationCell = document.createElement('td');
-  translationCell.id = 'td'; // 添加一个 ID 以便在 adjustFontSize 中使用
-  translationCell.textContent = translation;
-  newRow.appendChild(translationCell);
+  cell.id = 'td';
+  cell.textContent = message;
 
-  tbody.appendChild(newRow);
+  if (isError) {
+    cell.style.color = 'red';
+  }
 
-  // 调用 adjustFontSize 函数
+  newRow.appendChild(cell);
+  translate_body.appendChild(newRow);
   adjustFontSize();
-});
+}
+
+if (translate_bar) {
+  translate_bar.addEventListener('submit', async (event) => {
+    event.preventDefault();
+  
+    // 获取表单数据
+    const formData = new FormData(translate_bar);
+    const text = formData.get('text');
+    const targetLang = formData.get('targetLang');
+    
+    try {
+      const response = await fetch('/api/translate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text: typeof text === 'string' ? text.trim() : '',
+          targetLang: typeof targetLang === 'string' ? targetLang : ''
+        })
+      });
+      const result = await response.json().catch(function () {
+        return {};
+      });
+      
+      if (!response.ok) {
+        throw new Error(result.error || `API请求失败: ${response.status}`);
+      }
+
+      const translation = result.translations && result.translations[0]
+        ? result.translations[0].text
+        : '';
+
+      if (!translation) {
+        throw new Error('翻译结果为空');
+      }
+      
+      renderTranslationRow(translation, false);
+    } catch (error) {
+      console.error('翻译请求出错:', error);
+      renderTranslationRow(`翻译失败: ${error.message}`, true);
+    }
+  });
+}
+  
