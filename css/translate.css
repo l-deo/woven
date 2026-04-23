@@ -1,95 +1,94 @@
 #translate_bar {
-    -webkit-animation: fadeIn 2.5s;
-    animation: fadeIn 2.5s;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    display: none;
-    height: 60px;
-    margin: 0 2vw;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 15px;
-  }
-  
-  #translate_select {
-    background-color: transparent;
-    border: none;
-    color: rgb(74, 66, 102);
-    float: left;
-    font-family: Impact, Charcoal, sans-serif;
-    font-size: 2.5em;
-    font-weight: 600;
-    height: 60px;
-    letter-spacing: 1.5px;
-    max-width: 200px;
-    min-width: 50px;
-    outline: 0;
-    text-align: center;
-    width: 20%;
-  }
-  
-  #translate_input {
-    background-color: transparent;
-    border: none;
-    color: rgb(74, 66, 102);
-    font-size: 30px;
-    height: 60px;
-    min-height: 35px;
-    outline: 0;
-    overflow: hidden;
-    padding: 0 10px;
-    width: 100%;
-  }
-  
-  #translate_submit {
-    background-color: transparent;
-    border: none;
-    color: rgb(74, 66, 102);
-    float: right;
-    font-size: 40px;
-    font-weight: 500;
-    height: 60px;
-    outline: 0;
-    padding: 0 13px;
-  }
-  
-  #translate_box {
-    display: none;
-    height: 100%;
-    /* overflow: hidden; */
-    width: 100%;
-  }
-  
-  #translate_box tbody {
-    background-color: rgb(202, 202, 202);
-    display: flex;  
-    flex-direction: row-reverse;
-    height: 95%;
-  }
-  
-  #translate_box tbody::-webkit-scrollbar {
-    display: none !important;
-  }
-  
-  #translate_box tr {
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: -moz-scrollbars-none;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  
-  #translate_box tr::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #translate_box td {
-    color: rgb(74, 66, 102);
-    /* font-family: "Comic Sans MS", cursive, sans-serif; */
-    font-size: 8vw;
-    font-weight: 900;
-    margin-right: 2.5vw;
-    text-align: right;
-    word-break: break-all;
-  }
-  
+  -webkit-animation: fadeIn 2.5s;
+  animation: fadeIn 2.5s;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  display: none;
+  height: 60px;
+  margin: 0 2vw;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 15px;
+}
+
+#translate_select {
+  background-color: transparent;
+  border: none;
+  color: rgb(74, 66, 102);
+  float: left;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 2.5em;
+  font-weight: 600;
+  height: 60px;
+  letter-spacing: 1.5px;
+  max-width: 200px;
+  min-width: 50px;
+  outline: 0;
+  text-align: center;
+  width: 20%;
+}
+
+#translate_input {
+  background-color: transparent;
+  border: none;
+  color: rgb(74, 66, 102);
+  font-size: 30px;
+  height: 60px;
+  min-height: 35px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  width: 100%;
+}
+
+#translate_submit {
+  background-color: transparent;
+  border: none;
+  color: rgb(74, 66, 102);
+  float: right;
+  font-size: 40px;
+  font-weight: 500;
+  height: 60px;
+  outline: 0;
+  padding: 0 13px;
+}
+
+#translate_box {
+  display: none;
+  height: 100%;
+  /* overflow: hidden; */
+  width: 100%;
+}
+
+#translate_box tbody {
+  background-color: rgb(202, 202, 202);
+  display: flex;
+  flex-direction: row-reverse;
+  height: 95%;
+}
+
+#translate_box tbody::-webkit-scrollbar {
+  display: none !important;
+}
+
+#translate_box tr {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: -moz-scrollbars-none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#translate_box tr::-webkit-scrollbar {
+  display: none;
+}
+
+#translate_box td {
+  color: rgb(74, 66, 102);
+  /* font-family: "Comic Sans MS", cursive, sans-serif; */
+  font-size: 8vw;
+  font-weight: 900;
+  margin-right: 2.5vw;
+  text-align: right;
+  word-break: break-all;
+}

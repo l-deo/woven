@@ -82,7 +82,7 @@ html::-webkit-scrollbar {
     font-family: "Times New Roman", Times, serif;
     font-weight: bold;
     color: rgba(50, 50, 50, 0.6);
-    font-size: 3.5em;
+    font-size: 4em;
     /* letter-spacing: 0.08em; */
     margin-top: 0.6vh;
     text-transform: uppercase;

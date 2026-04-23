@@ -11,96 +11,212 @@
     top: 15px;
   }
   
-  #city {
-    background-color: transparent;
-    border: none;
-    color: rgb(74, 66, 102);
-    font-size: 30px;
-    height: 60px;
-    min-height: 35px;
-    outline: 0;
-    overflow: hidden;
-    padding: 0 10px;
-    width: 100%;
-  }
-  
-  #unit {
-    background-color: transparent;
-    border: none;
-    color: rgb(74, 66, 102);
-    float: left;
-    font-family: Impact, Charcoal, sans-serif;
-    font-size: 2.5em;
-    font-weight: 600;
-    height: 60px;
-    letter-spacing: 1.5px;
-    max-width: 200px;
-    min-width: 50px;
-    outline: 0;
-    text-align: center;
-    width: 20%;
-  }
-  
-  #weather_submit {
-    background-color: transparent;
-    border: none;
-    color: rgb(74, 66, 102);
-    float: right;
-    font-size: 40px;
-    font-weight: 500;
-    height: 60px;
-    outline: 0;
-    padding: 0 13px;
-  }
-  
-  #weather_box {
-    display: none;
-    height: 100%;
-    width: 100%;
-  }
-  
-  #weather_body {
-    display: flex;
-    flex-direction: column-reverse;
-    height: 100%;
-    overflow: -moz-scrollbars-none !important;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    width: 100%;
-  }
-  
-  #weather_body::-webkit-scrollbar {
-    width: 0 !important;
-  }
-  
-  #weather_box table {
-    border-collapse: collapse;
-  }
-  
-  #weather_box th, #weather_box td {
-    text-align: center;
-    padding: 0.25em;
-  }
-  
-  #weather_box td {
-    font-style: italic;
-  }
-  
-  #weatherData {
-    color: black;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 3vw;
-    /* font-style: italic; */
+#city {
+  background-color: transparent;
+  border: none;
+  color: rgb(74, 66, 102);
+  font-size: 30px;
+  height: 60px;
+  min-height: 35px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  width: 100%;
+}
+
+#unit {
+  background-color: transparent;
+  border: none;
+  color: rgb(74, 66, 102);
+  float: left;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 2.5em;
+  font-weight: 600;
+  height: 60px;
+  letter-spacing: 1.5px;
+  max-width: 200px;
+  min-width: 50px;
+  outline: 0;
+  text-align: center;
+  width: 20%;
+}
+
+#weather_submit {
+  background-color: transparent;
+  border: none;
+  color: rgb(74, 66, 102);
+  float: right;
+  font-size: 40px;
+  font-weight: 500;
+  height: 60px;
+  outline: 0;
+  padding: 0 13px;
+}
+
+#weather_box {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+#weather_body {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  overflow: -moz-scrollbars-none !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+#weather_body::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.weather-display {
+  text-align: right;
+  margin: 4% 4%;
+}
+
+.current-weather {
+    font-size: 5vw;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2.5px solid rgba(74, 66, 102, .255);
+}
+
+.current-weather .date {
+    font-size: 1.1em;
     font-weight: bold;
-    margin-right: 1vw;
-    text-align: justify;
-  }
-  
-  #forecastData {
-    border-radius: 4px;
-    color: black;
-    display: contents;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 2.5vw;
-    padding: 20px;
-  }
+    margin-bottom: 12px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.current-weather .date br + * {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.current-weather .condition {
+    font-weight: lighter;
+    margin: 5px 0;
+    color: #555;
+}
+
+.current-weather .temp {
+    font-size: 1.3em;
+    font-weight: lighter;
+    color: #222;
+}
+
+.forecast {
+    display: flex;
+    justify-content: flex-end;
+    gap: 45px;
+    margin-right: 2.5%;
+}
+
+.forecast-day {
+    text-align: center;
+    font-size: 3vw;
+    min-width: 100px;
+}
+
+.forecast-day .date {
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.forecast-day .date br + * {
+    font-size: 0.8em;
+    color: #666;
+    display: block;
+    margin-top: 2px;
+}
+
+.forecast-day .condition {
+    font-weight: lighter;
+    margin: 5px 0;
+    color: #666;
+}
+
+.forecast-day .temp {
+    font-weight: lighter;
+    margin-top: 5px;
+    color: #333;
+}
+
+/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
+@media screen and (max-width: 768px) {
+    #weather_body {
+        flex-direction: column;
+    }
+    .forecast {
+        gap: 20px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        justify-content: flex-start;
+        margin-right: 0;
+        padding: 0 2.5%;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    /* .forecast::-webkit-scrollbar {
+        display: none;
+    } */
+    
+    .forecast-day {
+        min-width: 150px;
+        flex-shrink: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 500px) and (min-width: 350px) {
+    #weather_body {
+        zoom: 150%;
+    }
+}
+
+@media screen and (max-width: 349px) {
+    #weather_body {
+        zoom: 200%;
+    }
+}
+
+.forecast-day {
+    text-align: center;
+    min-width: 100px;
+}
+
+.forecast-day .date {
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.forecast-day .date br + * {
+    color: #666;
+    display: block;
+    margin-top: 2px;
+}
+
+.forecast-day .condition {
+    font-weight: lighter;
+    margin: 5px 0;
+    color: #666;
+}
+
+.forecast-day .temp {
+    font-weight: lighter;
+    margin-top: 5px;
+    color: #333;
+}
+
+
+/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
