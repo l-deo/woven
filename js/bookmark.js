@@ -34,7 +34,7 @@ function initSingleBookmarkEvents(bookmark) {
     
     // 获取bookmark内的主链接（.main-content中的a标签）
     var mainContent = bookmark.querySelector('.main-content');
-    var mainLink = bookmark.querySelector('.main-content');
+    var mainLink = bookmark.querySelector('.main-content a');
     var subLinks = bookmark.querySelector('.sub-links');
     
     // 长按检测函数（闭包内部）
