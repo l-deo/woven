@@ -35,6 +35,7 @@ function initSingleBookmarkEvents(bookmark) {
     // 获取bookmark内的主链接（.main-content中的a标签）
     var mainContent = bookmark.querySelector('.main-content');
     var mainLink = bookmark.querySelector('.main-content a');
+    var subLinks = bookmark.querySelector('.sub-links');
     
     // 长按检测函数（闭包内部）
     function startLongPress() {
@@ -57,72 +58,108 @@ function initSingleBookmarkEvents(bookmark) {
         }, 50);
     }
     
-    // 鼠标事件
-    bookmark.addEventListener('mousedown', function(e) {
-        startLongPress();
-    });
-    
-    bookmark.addEventListener('mouseup', function(e) {
-        // 延迟取消，让click事件能够读取到isLongPress的状态
-        setTimeout(function() {
-            cancelLongPress();
-        }, 10);
-    });
-    
-    bookmark.addEventListener('mouseleave', function(e) {
-        cancelLongPress();
-        isLongPress = false; // 鼠标离开时重置状态
-    });
-    
-    // 触摸事件（移动端）
-    bookmark.addEventListener('touchstart', function(e) {
-        startLongPress();
-    }, {passive: true});
-    
-    bookmark.addEventListener('touchend', function(e) {
-        // 延迟取消，让click事件能够读取到isLongPress的状态
-        setTimeout(function() {
-            cancelLongPress();
-        }, 10);
-    });
-    
-    bookmark.addEventListener('touchcancel', function(e) {
-        cancelLongPress();
-        isLongPress = false; // 触摸取消时重置状态
-    });
-    
-    // 关键修复：在main-content上处理点击事件，而不仅仅是<a>标签
-    // 这样可以捕获整个区域的点击，包括<a>标签和<p>标签
+    // 长按检测与点击处理：仅作用于 .main-content（含其中的 <a> 与 <p>）
+    // 这样长按 .sub-links 不会触发展开/收起
     if (mainContent && mainLink) {
-        // 在main-content上阻止<a>标签的默认行为
+        // 鼠标事件
         mainContent.addEventListener('mousedown', function(e) {
-            // 如果点击的是<a>标签，阻止其默认行为
+            // 如果按下的是 <a>，先阻止其默认导航，否则按住时浏览器可能直接拖拽/导航
             if (e.target.tagName === 'A') {
                 e.preventDefault();
             }
+            startLongPress();
         });
-        
+
+        mainContent.addEventListener('mouseup', function(e) {
+            // 延迟取消，让 click 事件能够读取到 isLongPress 的状态
+            setTimeout(function() {
+                cancelLongPress();
+            }, 10);
+        });
+
+        mainContent.addEventListener('mouseleave', function(e) {
+            cancelLongPress();
+            isLongPress = false; // 鼠标离开时重置状态
+        });
+
+        // 触摸事件（移动端）
         mainContent.addEventListener('touchstart', function(e) {
-            // 如果点击的是<a>标签，阻止其默认行为
             if (e.target.tagName === 'A') {
                 e.preventDefault();
             }
+            startLongPress();
         }, {passive: false});
-        
-        // 在main-content上处理click事件
+
+        mainContent.addEventListener('touchend', function(e) {
+            setTimeout(function() {
+                cancelLongPress();
+            }, 10);
+        });
+
+        mainContent.addEventListener('touchcancel', function(e) {
+            cancelLongPress();
+            isLongPress = false; // 触摸取消时重置状态
+        });
+
+        // 在 main-content 上统一处理 click，覆盖 <a> 和 <p> 等任意子元素
         mainContent.addEventListener('click', function(e) {
-            // 总是阻止默认行为
+            // 总是阻止默认行为（防止 <a> 直接导航）
             e.preventDefault();
             e.stopPropagation();
-            
+
             if (isLongPress) {
-                // 如果是长按，不做任何事（已经展开了sub-links）
+                // 长按已经触发了展开/收起，这里仅重置标志
                 isLongPress = false;
             } else {
-                // 短按时，手动触发导航
+                // 短按：打开主链接
                 window.open(mainLink.href, '_blank');
             }
         });
+    }
+
+    // .sub-links：长按任意位置（含子链接 <a>）收起；短按 <a> 仍正常跳转
+    if (subLinks) {
+        // 鼠标
+        subLinks.addEventListener('mousedown', function(e) {
+            startLongPress();
+        });
+
+        subLinks.addEventListener('mouseup', function(e) {
+            setTimeout(function() {
+                cancelLongPress();
+            }, 10);
+        });
+
+        subLinks.addEventListener('mouseleave', function(e) {
+            cancelLongPress();
+            isLongPress = false;
+        });
+
+        // 触摸
+        subLinks.addEventListener('touchstart', function(e) {
+            startLongPress();
+        }, {passive: true});
+
+        subLinks.addEventListener('touchend', function(e) {
+            setTimeout(function() {
+                cancelLongPress();
+            }, 10);
+        });
+
+        subLinks.addEventListener('touchcancel', function(e) {
+            cancelLongPress();
+            isLongPress = false;
+        });
+
+        // 关键：在捕获阶段拦截 click，长按时阻止 <a> 跳转，短按则放行
+        subLinks.addEventListener('click', function(e) {
+            if (isLongPress) {
+                e.preventDefault();
+                e.stopPropagation();
+                isLongPress = false;
+            }
+            // 非长按场景不做任何处理，让 <a target="_blank"> 自然跳转
+        }, true);
     }
 }
 

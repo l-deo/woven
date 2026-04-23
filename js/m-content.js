@@ -33,6 +33,7 @@ function m_bookmarkContent() {
     if (window.innerWidth >= 650) return;
 
     var mobileMap = {
+        "chouti": "https://m.chouti.cn/",
         "hupu": "https://m.hupu.com/",
         "ithome": "https://m.ithome.com/",
         "zhibo8": "https://m.zhibo8.cc/"
