@@ -36,7 +36,7 @@ function m_bookmarkContent() {
         "chouti": "https://m.chouti.cn/",
         "hupu": "https://m.hupu.com/",
         "hupu_bbs": "https://m.hupu.com/zone/",
-        "hupu_bbs_spurs": "https://m.hupu.com/zone/spurs/",
+        "hupu_bbs_spurs": "https://m.hupu.com/zone/126/",
         "ithome": "https://m.ithome.com/",
         "zhibo8": "https://m.zhibo8.cc/"
     };
