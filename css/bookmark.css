@@ -1,174 +1,185 @@
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .bookmark {
-  animation: fadeIn 2s;
-  position: relative;
-  display: grid; /* 使用grid让两个容器重叠 */
-  grid-template-areas: "content";
+    animation: fadeIn 2s;
+    position: relative;
+    display: grid; /* 使用grid让两个容器重叠 */
+    grid-template-areas: "content";
+    align-items: center; /* 垂直居中叠加层 */
 }
 
 /* 主内容容器（主链接和描述） */
 .bookmark .main-content {
-  grid-area: content; /* 占据同一网格区域 */
-  opacity: 1;
-  transition: opacity 200ms ease-in-out;
-  pointer-events: auto;
+    grid-area: content; /* 占据同一网格区域 */
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+    pointer-events: auto;
+    align-self: center;
 }
 
 /* 子链接容器 */
 .sub-links {
-  grid-area: content; /* 占据同一网格区域，与main-content重叠 */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 250ms ease-in-out;
-  max-height: 160px; /* 限制为两个链接的高度 (约74px × 2 + 余量) */
-  overflow-y: auto; /* 超出部分显示滚动条 */
-  overflow-x: hidden; /* 隐藏横向滚动 */
-  scroll-behavior: smooth; /* 平滑滚动效果 */
+    grid-area: content; /* 占据同一网格区域，与main-content重叠 */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms ease-in-out;
+    max-height: 220px; /* 提高可视高度，显示更多子链接 */
+    overflow-y: auto; /* 超出部分显示滚动条 */
+    overflow-x: hidden; /* 隐藏横向滚动 */
+    scroll-behavior: smooth; /* 平滑滚动效果 */
+    align-self: center;
 }
 
 /* 隐藏滚动条 - WebKit浏览器 */
 .sub-links::-webkit-scrollbar {
-  display: none; /* 完全隐藏滚动条 */
+    display: none; /* 完全隐藏滚动条 */
 }
 
 /* 隐藏滚动条 - Firefox */
 .sub-links {
-  scrollbar-width: none; /* 隐藏滚动条 */
+    scrollbar-width: none; /* 隐藏滚动条 */
 }
 
 /* 展开状态：主内容淡出，子链接淡入 */
 .bookmark.expanded .main-content {
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .bookmark.expanded .sub-links {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 body {
-  background-color: rgb(202, 202, 202);
-  touch-action: manipulation;
+    background-color: rgb(202, 202, 202);
+    touch-action: manipulation;
 }
 
-body::-webkit-scrollbar { 
-  display: none;
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #bookmark_body {
-  display: flex;
-  height: 103vh;
-  overflow: hidden;
-  width: 103vw;
-  flex-direction: column-reverse;
+    display: flex;
+    height: 103vh;
+    overflow: hidden;
+    width: 103vw;
+    flex-direction: column-reverse;
 }
 
 .bookmark {
-  border-top: 2.5px solid rgba(74, 66, 102, .255);
-  padding: 5%;
+    border-top: 2.5px solid rgba(74, 66, 102, 0.255);
+    min-height: 260px;
+    padding: 5%;
+    box-sizing: border-box;
 }
 
-.bookmark>p {
-  /* font-family: Arial, Helvetica, sans-serif; */
-  font-size: 120%;
+.bookmark > p {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-size: 120%;
 }
 
 .bookmark:nth-of-type(odd) {
-  text-align: right;
+    text-align: right;
 }
 
-.bookmark:nth-of-type(odd)>p {
-  margin-right: 1%;
+.bookmark:nth-of-type(odd) > p {
+    margin-right: 1%;
 }
 
 .bookmark:nth-of-type(even) {
-  text-align: left;
+    text-align: left;
 }
 
-.bookmark:nth-of-type(even)>p {
-  margin-left: 1%;
+.bookmark:nth-of-type(even) > p {
+    margin-left: 1%;
 }
 
 .bookmark a {
-  /* border-top: 2px solid rgba(74, 66, 102, .255); */
-  color: rgb(70, 70, 70);
-  /* font-family: "Lucida Console", Monaco, monospace; */
-  font-size: 700%;
-  font-weight: 100;
-  text-decoration: none;
+    /* border-top: 2px solid rgba(74, 66, 102, .255); */
+    color: rgb(70, 70, 70);
+    /* font-family: "Lucida Console", Monaco, monospace; */
+    font-size: 700%;
+    font-weight: 100;
+    text-decoration: none;
 }
 
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
 
 /* 子链接 a 的颜色悬停 */
 .sub-links a {
-  display: block;
-  font-size: 400%;
-  font-weight: 250;
-  margin: 5px 0;
-  color: rgb(100, 100, 100);
-  text-decoration: none;
-  transition: color 0.2s ease;
+    display: block;
+    font-size: 400%;
+    font-weight: 250;
+    margin: 5px 0;
+    color: rgb(100, 100, 100);
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .sub-links a:hover {
-  color: rgb(50, 50, 50);
+    color: rgb(50, 50, 50);
 }
 
 /* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
 
 @media screen and (max-width: 600px) {
-  .bookmark:not(.expanded) .sub-links {
-    display: none;
-    max-height: 0;
-    overflow: hidden;
-  }
+    .bookmark:not(.expanded) .sub-links {
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+    }
 
-  .bookmark.expanded .sub-links {
-    display: block;
-    max-height: calc(2 * (1.2em + 20px));
-    overflow-y: auto;
-  }
+    .bookmark.expanded .sub-links {
+        display: block;
+        max-height: calc(3 * (1.2em + 20px));
+        overflow-y: auto;
+    }
 
-  .bookmark.expanded .sub-links a {
-    line-height: 1.3;
-    padding: 0;
-    margin: 0;
-  }
+    .bookmark.expanded .sub-links a {
+        line-height: 1.3;
+        padding: 0;
+        margin: 0;
+    }
 }
 
-@media screen and (max-width: 600px) and (min-width: 500px) {
-  .bookmark a {
-    font-size: 400%;
-  }
+/* ——————————————————————————————————————————分割线———————————————————————————————————————————————————— */
 
-  .bookmark.expanded .sub-links a {
-    font-size: 350%;
-  }
+@media screen and (max-width: 600px) and (min-width: 500px) {
+    .bookmark a {
+        font-size: 550%;
+    }
+
+    .bookmark.expanded .sub-links a {
+        font-size: 450%;
+    }
 }
 
 @media screen and (max-width: 499px) {
-  .bookmark a {
-    font-size: 300%;
-  }
+    .bookmark a {
+        font-size: 450%;
+    }
 
-  .bookmark.expanded .sub-links a {
-    font-size: 255%;
-  }
+    .bookmark.expanded .sub-links a {
+        font-size: 350%;
+    }
 }
 
 @media screen and (max-width: 299px) {
-  .bookmark a {
-    font-size: 200%;
-  }
+    .bookmark a {
+        font-size: 350%;
+    }
 
-  .bookmark.expanded .sub-links a {
-    font-size: 200%;
-  }
+    .bookmark.expanded .sub-links a {
+        font-size: 250%;
+    }
 }
